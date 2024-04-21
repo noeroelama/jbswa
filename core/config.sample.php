@@ -10,6 +10,10 @@ $sekolah = trim($G_JUDUL_DEPAN_1);
 // total maksimal pesan dan dikirim per menit yang diambil dari outbox
 $cronLimit = 30;
 
+// send only to phonebook contact
+// hanya mengirim pesan ke orang yang pernah chat duluan
+$onlyToContact = false; // true or false
+
 function sendwa($phone, $message, $base_url, $token){
     $url = $base_url . 'api/send_express';
     $curl = curl_init();
