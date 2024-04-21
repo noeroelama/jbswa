@@ -7,6 +7,7 @@ $mysecret   = "my_secret_key";
 
 if ($array['category'] == 'private' && $mysecret == $secret) {
     $wa     = $array["number"];
+    $pn     = $array["pushname"];
     $sid    = $array["id"];
     $pesan  = $array["message"];
 
@@ -34,6 +35,7 @@ if ($array['category'] == 'private' && $mysecret == $secret) {
     $keys   = explode("#",$pesan);
     $keys   = array_map('trim',$keys);
     $key    = strtolower(trim($keys[0]));
+    $pn = mysqli_real_escape_string($conn, $pn);
 
     switch ($key) {
         case '/start':
@@ -392,7 +394,11 @@ if ($array['category'] == 'private' && $mysecret == $secret) {
             break;
     
         default:
-            # code...
+            //input ke kontak
+            $rescek = $conn->query("SELECT * FROM jbssms.pbk WHERE Number='$wa'");
+            if(mysqli_num_rows($rescek) == 0){
+                $conn->query("INSERT INTO jbssms.pbk SET Number='$wa',Name='$pn'");
+            }
             break;
     }
 
