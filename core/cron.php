@@ -16,6 +16,17 @@ if (mysqli_num_rows($res) > 0) {
         $msg = $row['Text'];
         $id  = $row['ID'];
 
+        if($onlyToContact == true){
+            $hp = substr($hp,0,1) == '0' ? '62'.substr($hp,1) : $hp;
+    
+            // cek apakah $hp ada di phonebook
+            $rescek = $conn->query("SELECT * FROM pbk WHERE Number='$hp'");
+    
+            if (mysqli_num_rows($rescek) == 0) {
+                continue;
+            }
+        }
+
         $response = sendwa($hp, $msg, $base_url, $token);
         $data     = json_decode($response,TRUE);
 
