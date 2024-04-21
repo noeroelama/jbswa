@@ -4,6 +4,9 @@ JBSWAGW ini merupakan script open source yang befungsi menggantikan sebagian fun
 
 Script ini hanya dapat digunakan jika aplikasi JIBAS Anda sudah _live_ atau dapat diakses secara publik.
 
+# [DEPRECATED]
+- Button dan Message List sudah tidak tersedia lagi
+
 ## Contoh
 Saat ini, script hanya bisa digunakan untuk melihat data keuangan siswa. Adapun data keuangan untuk calon siswa maupun pegawai masih dalam pengembangan. Untuk menu penilaian dan kehadiran juga masih dalam masa pengembangan. :D
 
@@ -24,9 +27,8 @@ Silakan masuk ke folder JIBAS Anda. Kita asumsikan URL Anda adalah [https://doma
 ## Daftar Akun
 Silakan mendaftarkan akun di sistem WhatsApp Gateway di [wanesia.com](https://wanesia.com) atau versi Free Lite di [lite.wanesia.com](https://lite.wanesia.com).
 1. Daftar akun
-2. Japri WA 0819886180 agar diberikan saldo trial
-3.  Masuk ke menu Device
-4.  Tambah Device, pilih Trial
-5.  Isi webhook/callback dengan https://domainsekolah.sch.id/jibas/jbswa/core/callback.php?secret=my_secret_key
-6.  Scan QR Code dengan aplikasi WhatsApp Anda yang akan dijadikan bot hingga _connected_
-7.  Kirim pesan ke nomor bot Anda dengan format **/start**
+2. Masuk ke menu Device
+3. Tambah Device, pilih Trial
+4. Isi webhook/callback dengan https://domainsekolah.sch.id/jibas/jbswa/core/callback.php?secret=my_secret_key
+5. Scan QR Code dengan aplikasi WhatsApp Anda yang akan dijadikan bot hingga _connected_
+6. Kirim pesan ke nomor bot Anda dengan format **/start**
