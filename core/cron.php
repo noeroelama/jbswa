@@ -23,7 +23,7 @@ if (mysqli_num_rows($res) > 0) {
             $rescek = $conn->query("SELECT * FROM pbk WHERE Number='$hp'");
     
             if (mysqli_num_rows($rescek) == 0) {
-                $conn->query("UPDATE outbox SET `status`=-1 WHERE ID='$id'");
+                $conn->query("UPDATE outbox SET `status`=9 WHERE ID='$id'");
                 continue;
             }
         }
