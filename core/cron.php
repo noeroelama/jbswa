@@ -7,7 +7,7 @@ $conn = mysqli_connect($db_host,$db_user,$db_pass,'jbssms');
 $base_url   = "https://wanesia.com/"; // atau https://lite.wanesia.com/
 $token      = "xxx"; //diperoleh di device wanesia.com atau di lite.wanesia.com
 
-$sql = "SELECT * FROM outbox LIMIT " . $cronLimit;
+$sql = "SELECT * FROM outbox WHERE `status`=0 LIMIT " . $cronLimit;
 $res = $conn->query($sql);
 
 if (mysqli_num_rows($res) > 0) {
@@ -23,6 +23,7 @@ if (mysqli_num_rows($res) > 0) {
             $rescek = $conn->query("SELECT * FROM pbk WHERE Number='$hp'");
     
             if (mysqli_num_rows($rescek) == 0) {
+                $conn->query("UPDATE outbox SET `status`=-1 WHERE ID='$id'");
                 continue;
             }
         }
