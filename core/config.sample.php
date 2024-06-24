@@ -1,8 +1,8 @@
 <?php
 
-include('../../include/system.config.php');
-include('../../include/school.config.php');
-include('../../include/database.config.php');
+require_once(dirname(__FILE__) . '/../../include/system.config.php');
+require_once(dirname(__FILE__) . '/../../include/school.config.php');
+require_once(dirname(__FILE__) . '/../../include/database.config.php');
 
 //isi detail token WA
 $base_url   = "https://wanesia.com/"; // atau https://lite.wanesia.com/

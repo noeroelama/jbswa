@@ -1,6 +1,5 @@
 <?php
-
-include('config.php');
+include(dirname(__FILE__) . '/config.php');
 $conn = mysqli_connect($db_host, $db_user, $db_pass, 'jbssms');
 
 $sql = "SELECT * FROM outbox WHERE `status`=0 LIMIT " . $cronLimit;
@@ -31,7 +30,7 @@ if (mysqli_num_rows($res) > 0) {
         $status   = ($data['status'] == 'sent') ? 1 : 0;
 
         // masukkan ke outboxhistory
-        $resHistory = $conn->query("INSERT INTO outboxhistory SET Text='$msg', DesstinationNumber='$hp', status='$status'");
+        $resHistory = $conn->query("INSERT INTO outboxhistory SET Text='$msg', DestinationNumber='$hp', status='$status'");
 
         // hapus outbox
         $resDel     = $conn->query("DELETE FROM outbox WHERE ID='$id'");
