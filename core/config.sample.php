@@ -8,6 +8,12 @@ require_once(dirname(__FILE__) . '/../../include/database.config.php');
 $base_url   = "https://wanesia.com/"; // atau https://lite.wanesia.com/
 $token      = "xxx"; //diperoleh di device wanesia.com atau di lite.wanesia.com
 
+// multi token // isi nama dept1, dept2, dst, dengan nama departemen
+// token adalah nilai default
+$tokens['dept1'] = '';
+$tokens['dept2'] = '';
+$tokens['default'] = $token;
+
 // nama sekolah diambil dari JUDUL_DEPAN_1
 $sekolah = trim($G_JUDUL_DEPAN_1);
 

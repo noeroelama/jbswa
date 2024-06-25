@@ -23,6 +23,13 @@ if (mysqli_num_rows($res) > 0) {
             }
         }
 
+        foreach ($tokens as $tokenkey => $tokenvalue) {
+            if (strpos($msg, $tokenkey) !== false) {
+                $token = $tokenvalue;
+                break;
+            }
+        }
+
         $response = sendwa($hp, $msg, $base_url, $token);
         $data     = json_decode($response, TRUE);
 
