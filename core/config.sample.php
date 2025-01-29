@@ -14,6 +14,12 @@ $sekolah = trim($G_JUDUL_DEPAN_1);
 // total maksimal pesan dan dikirim per menit yang diambil dari outbox
 $cronLimit = 30;
 
+// format
+$dformat  = "\n\n*Keuangan*: \n`INFO NIS PIN KEUANGAN`";
+$dformat .= "\n\n*Presensi*: \n`INFO NIS PIN PRESENSI`";
+$dformat .= "\n\n*Nilai*: \n`INFO NIS PIN NILAI`";
+$dformat .= "\n\n*Contoh*: \n`INFO 10110100 12345 KEUANGAN`";
+
 // send only to phonebook contact
 // hanya mengirim pesan ke orang yang pernah chat duluan
 $onlyToContact = false; // true or false
@@ -92,6 +98,31 @@ function sendlist($phone, $body, $button, $section, $title, $subtitle, $idl, $ba
         'descriptionlist' => $subtitle,
         'rowid' => $idl
 
+    ));
+    // curl_setopt($curl, CURLOPT_HTTPHEADER,'Content-Type: application/x-www-form-urlencoded');
+
+
+    $response = curl_exec($curl);
+    curl_close($curl);
+    return $response;
+}
+
+function sendreact($phone, $wamid, $emoji, $base_url, $token)
+{
+    $url = $base_url . 'api/send_reaction';
+    $curl = curl_init();
+    curl_setopt($curl, CURLOPT_URL, $url);
+    curl_setopt($curl, CURLOPT_HEADER, 0);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 2);
+    curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
+    curl_setopt($curl, CURLOPT_TIMEOUT, 30);
+    curl_setopt($curl, CURLOPT_POST, 1);
+    curl_setopt($curl, CURLOPT_POSTFIELDS, array(
+        'token'   => $token,
+        'number'  => $phone,
+        'emoji'   => $emoji,
+        'wamid'   => $wamid,
     ));
     // curl_setopt($curl, CURLOPT_HTTPHEADER,'Content-Type: application/x-www-form-urlencoded');
 
